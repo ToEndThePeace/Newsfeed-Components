@@ -1,10 +1,16 @@
+// Element Declarations
 const formContainer = get(".form")[0];
+const addButton = get(".new-button")[0];
+const closeButton = get("#formCloseButton")[0];
+const submitBtn = get("#submit")[0];
 
+// Basic Form Functions
+// Toggles Form Overlay on the Page
 function toggleForm() {
   formContainer.classList.toggle("toggleOn");
 }
+// Clears the form elements
 function clearForm() {
-  // Clear the form
   get("#title")[0].value = "";
   get("#date")[0].value = "";
   get("#firstP")[0].value = "";
@@ -12,29 +18,32 @@ function clearForm() {
   get("#thirdP")[0].value = "";
 }
 
-formContainer.addEventListener("click", event => {
-  if (!event.target.matches("form")) {
-    toggleForm();
-  }
-})
-
-
-const addButton = get(".new-button")[0];
+// When add article button is pressed, display the form
 addButton.addEventListener("click", (event) => {
   toggleForm();
 });
+
+// Ways to close the form
+// Close form if area outside of it is clicked
+formContainer.addEventListener("click", (event) => {
+  if (event.target.matches(".form")) {
+    toggleForm();
+  }
+});
+// Close form if the escape key is pressed
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     formContainer.classList.remove("toggleOn");
     clearForm();
   }
 });
-
-const closeButton = get("#formCloseButton")[0];
+// Close form if close button is pressed
 closeButton.addEventListener("click", () => {
   toggleForm();
   clearForm();
 });
+
+// Mouseover to add text-shadow to close button on form (could have used :hover)
 closeButton.addEventListener("mouseover", () => {
   closeButton.style["text-shadow"] = "0 0 2px #000";
 });
@@ -42,7 +51,7 @@ closeButton.addEventListener("mouseout", () => {
   closeButton.style["text-shadow"] = "none";
 });
 
-const submitBtn = get("#submit")[0];
+// When submit button is pressed, pull data from the form, clear it, and post new article
 submitBtn.addEventListener("click", () => {
   // Pull the data from the form
   const formText = {
@@ -53,7 +62,7 @@ submitBtn.addEventListener("click", () => {
     thirdParagraph: get("#thirdP")[0].value,
   };
 
-  // Clear and hife the form
+  // Clear and hide the form
   clearForm();
   toggleForm();
 

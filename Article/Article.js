@@ -1,3 +1,4 @@
+// Article data
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -93,10 +94,21 @@ const data = [
   },
 ];
 
+// Getter function that returns HTML nodes based on query selectors
 function get(selector) {
   return document.querySelectorAll(selector);
 }
 
+/**
+ * A function intended to create new article elements to append to the DOM
+ * @param {Object} param0 is an article object with the following fields:
+ * @param {string} param0.title is the article title.
+ * @param {string} param0.date is the post date for the article.
+ * @param {string} param0.firstParagraph is a string containing the first paragraph content.
+ * @param {string} param0.secondParagraph is a string containing the second paragraph content.
+ * @param {string} param0.thirdParagraph is a string containing the third paragraph content.
+ * @returns {Node} a formatted and nested HTML node
+ */
 function makeArticle({
   title,
   date,
@@ -112,11 +124,13 @@ function makeArticle({
   const par2 = document.createElement("p");
   const par3 = document.createElement("p");
   const button = document.createElement("span");
+  const close = document.createElement("span");
 
   // Add classes
   article.classList.add("article");
   pDate.classList.add("date");
   button.classList.add("expandButton");
+  close.classList.add("close");
 
   // Add content
   header.textContent = title;
@@ -125,8 +139,10 @@ function makeArticle({
   par2.textContent = secondParagraph;
   par3.textContent = thirdParagraph;
   button.textContent = "Expand";
+  close.innerHTML = "&times;";
 
   // Structure the elements
+  article.appendChild(close);
   article.appendChild(header);
   article.appendChild(pDate);
   article.appendChild(par1);
@@ -140,19 +156,26 @@ function makeArticle({
     button.textContent =
       button.textContent === "Expand" ? "Collapse" : "Expand";
   });
+  close.addEventListener("click", () => {
+    article.style.display = "none";
+  })
 
   // Return the article element
   return article;
 }
 
+/**
+ * A function to loop over an array of articles and append them to the div.articles in the DOM
+ * @param {Object[]} articleArray is an array containing article objects
+ * @summary loops through the given array and creates and appends each article to the DOM
+ */
 function addArticles(articleArray) {
   articleArray.map((x) => {
     get(".articles")[0].appendChild(makeArticle(x));
   });
 }
 
-function submitNewArticle(form) {
-  console.log(form);
-}
-
-addArticles(data);
+// When the window finishes loading, create the page content
+window.addEventListener("load", () => {
+  addArticles(data);
+})
