@@ -12,6 +12,13 @@ function clearForm() {
   get("#thirdP")[0].value = "";
 }
 
+formContainer.addEventListener("click", event => {
+  if (!event.target.matches("form")) {
+    toggleForm();
+  }
+})
+
+
 const addButton = get(".new-button")[0];
 addButton.addEventListener("click", (event) => {
   toggleForm();
@@ -21,6 +28,18 @@ window.addEventListener("keydown", (event) => {
     formContainer.classList.remove("toggleOn");
     clearForm();
   }
+});
+
+const closeButton = get("#formCloseButton")[0];
+closeButton.addEventListener("click", () => {
+  toggleForm();
+  clearForm();
+});
+closeButton.addEventListener("mouseover", () => {
+  closeButton.style["text-shadow"] = "0 0 2px #000";
+});
+closeButton.addEventListener("mouseout", () => {
+  closeButton.style["text-shadow"] = "none";
 });
 
 const submitBtn = get("#submit")[0];
