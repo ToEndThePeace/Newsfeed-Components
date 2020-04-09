@@ -7,18 +7,18 @@
   height: 10vh;
 }
 .menu {
+  display: none;
   position: fixed;
   top: 10vh;
-  left: -200px;
+  left: 0;
   width: 200px;
-  height: 90vh; /* This give the height 100% of the screen or, '100% of View Height' */
-  background-color: fade(#81C784, 85%);
+  height: 90vh;
+  /* This give the height 100% of the screen or, '100% of View Height' */
+  background-color: rgba(129, 199, 132, 0.85);
   border: none;
-  z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
-  transition: left .6s;
-  transition-timing-function: ease-out;
+  z-index: 2;
+  /* This set the layer level of the element, it has precendence over initial level of 1*/
 }
-
 .menu ul {
   height: 100%;
   display: flex;
@@ -26,15 +26,14 @@
   justify-content: space-around;
   padding: 0;
   margin: 0;
+  background-color: red;
 }
-
-.menu ul li{
+.menu ul li {
   list-style-type: none;
   font-size: 24px;
   text-align: center;
   text-shadow: 0 0 5px #888;
 }
-
 .menu--open {
-  left: 0;
+  display: block;
 }
