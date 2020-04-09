@@ -1,5 +1,5 @@
 .articles {
-  margin-top: 95px;
+  padding-top: 10vh;
 }
 .article {
   margin: 20px 10%;
@@ -8,9 +8,11 @@
   border-radius: 10px;
   background-color: white;
   position: relative;
-  height: 50px;
+  max-height: 75px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: max-height 1s;
+  transition-timing-function: ease-out;
 
   h2 {
     font-size: 28px;
@@ -42,7 +44,7 @@
 }
 
 .article-open {
-  height: 400px;
+  max-height: 800px;
 }
 
 

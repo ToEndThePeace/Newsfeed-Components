@@ -3,16 +3,49 @@
 <html>
   <head>
     <title>Lambda School Newsfeed</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="./CSS/index.css" />
-    <script src="./Menu/Menu.js" defer></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./CSS/index.css"
+    />
     <script src="./Article/Article.js" defer></script>
+    <script src="./Menu/Menu.js" defer></script>
+    <script src="./Form/Form.js" defer></script>
   </head>
   <body>
     <div class="header">
-      <img class="menu-button" src="./assets/menu.png"/>
+      <img class="menu-button" src="./assets/menu.png" />
       <h1>Lambda School Newsfeed</h1>
+      <img class="new-button" src="./assets/add.png" />
     </div>
     <div class="articles"></div>
+    <div class="form">
+      <form id="newArticleForm" onsubmit="submitNewArticle(this)" action="#">
+        <span id="formCloseButton">&times;</span>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div>
+          <label for="date">Date:</label>
+          <input type="text" name="date" id="date" />
+        </div>
+        <div>
+          <label for="firstP">Paragraph 1:</label>
+          <input type="text" name="firstP" id="firstP" />
+        </div>
+        <div>
+          <label for="secondP">Paragraph 2:</label>
+          <input type="text" name="secondP" id="secondP" />
+        </div>
+        <div>
+          <label for="thirdP">Paragraph 3:</label>
+          <input type="text" name="thirdP" id="thirdP" />
+        </div>
+        <input id="submit" type="submit" value="Submit" onclick="event.preventDefault()" />
+      </form>
+    </div>
   </body>
 </html>
 <!-- Do not add anything to the HTML -->

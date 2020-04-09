@@ -1,0 +1,53 @@
+.form {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background-color: fade(#000, 50%);
+
+  &.toggleOn {
+    display: block;
+  }
+
+  form {
+    height: 50vh;
+    width: 50%;
+    left: 25%;
+    top: 25vh;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: 0 0 15px black;
+    border-radius: 10px;
+    background-color: white;
+    padding: 50px 20px;
+
+    #formCloseButton {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      input {
+        width: 70%;
+      }
+    }
+    input#submit {
+      width: 25%;
+      cursor: pointer;
+    }
+  }
+}
