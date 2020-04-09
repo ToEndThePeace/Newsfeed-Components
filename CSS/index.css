@@ -29,7 +29,7 @@
   align-items: center;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
 }
 .header h1 {
   margin: 0;
@@ -45,9 +45,11 @@
   border-radius: 10px;
   background-color: white;
   position: relative;
-  height: 50px;
+  max-height: 75px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: max-height 1s;
+  transition-timing-function: ease-out;
 }
 .article h2 {
   font-size: 28px;
@@ -74,12 +76,19 @@
   background-color: white;
 }
 .article-open {
-  height: auto;
+  max-height: 800px;
 }
 .menu-button {
   position: absolute;
   left: 20px;
   cursor: pointer;
+}
+.new-button {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
 }
 .header {
   height: 10vh;
@@ -115,10 +124,55 @@
 .menu--open {
   left: 0;
 }
+.form {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.form.toggleOn {
+  display: block;
+}
+.form form {
+  height: 50vh;
+  width: 50%;
+  left: 25%;
+  top: 25vh;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 15px black;
+  border-radius: 10px;
+  background-color: white;
+  padding: 50px 20px;
+}
+.form form div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.form form div input {
+  width: 70%;
+}
+.form form input#submit {
+  width: 25%;
+}
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto";
   background-color: #fffef7;
+  height: 100%;
+  width: 100%;
 }

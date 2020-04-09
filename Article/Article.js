@@ -86,18 +86,24 @@ const data = [
   },
   {
     title: "Another Title",
-    date:  "SOME DATE",
+    date: "SOME DATE",
     firstParagraph: "lorem ipsum blah blah blah",
     secondParagraph: "even more content",
-    thirdParagraph: "finally done with this nonsense?"
-  }
+    thirdParagraph: "finally done with this nonsense?",
+  },
 ];
 
 function get(selector) {
   return document.querySelectorAll(selector);
 }
 
-function makeArticle({ title, date, firstParagraph, secondParagraph, thirdParagraph }) {
+function makeArticle({
+  title,
+  date,
+  firstParagraph,
+  secondParagraph,
+  thirdParagraph,
+}) {
   // Create elements
   const article = document.createElement("div");
   const header = document.createElement("h2");
@@ -131,12 +137,22 @@ function makeArticle({ title, date, firstParagraph, secondParagraph, thirdParagr
   // Add events to elements
   button.addEventListener("click", () => {
     article.classList.toggle("article-open");
-    button.textContent = (button.textContent === "Expand") ? "Collapse" : "Expand";
+    button.textContent =
+      button.textContent === "Expand" ? "Collapse" : "Expand";
   });
 
   // Return the article element
   return article;
 }
-data.map(x => {
-  get(".articles")[0].appendChild(makeArticle(x));
-})
+
+function addArticles(articleArray) {
+  articleArray.map((x) => {
+    get(".articles")[0].appendChild(makeArticle(x));
+  });
+}
+
+function submitNewArticle(form) {
+  console.log(form);
+}
+
+addArticles(data);
